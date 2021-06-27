@@ -30,6 +30,9 @@ hopefully you like it.
   <a href="#" _target="blank">
     <img src="https://img.shields.io/badge/stages-development-informational">
   </a>
+  <a href="https://github.com/novaardiansyah/react-todo-apps/blob/main/references.json" _target="blank">
+    <img src="https://img.shields.io/badge/information-references-informational">
+  </a>
   <a href="#" _target="blank">
     <img src="https://img.shields.io/github/repo-size/novaardiansyah/react-todo-apps?label=size&color=informational" />
   </a>
