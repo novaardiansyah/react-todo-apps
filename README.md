@@ -1,6 +1,6 @@
 ## React Todo Apps
 
-In this direpo I try to make a simple application to manage the to-do list.
+In this repo I try to make a simple application to manage the to-do list.
 
 I'm also trying to implement some of Firebase cool features, like Real-time
 Databases, and Authentication.
