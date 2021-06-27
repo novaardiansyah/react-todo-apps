@@ -1,9 +1,12 @@
 ## React Todo Apps
+
 In this direpo I try to make a simple application to manage the to-do list.
 
-I'm also trying to implement some of Firebase's cool features, like real-time databases, and authentication.
+I'm also trying to implement some of Firebase cool features, like Real-time
+Databases, and Authentication.
 
-with a simple look that is built with the css framework that is currently popular, namely Bootstrap v5, and also beautiful messages from the SweetAlert plugin.
+with a simple look that is built with the css framework Bootstrap, and also
+beautiful Alert from the SweetAlert.
 
 ### Environment
 
