@@ -20,9 +20,4 @@ body {
 
 a {
   text-decoration: none;
-  color: map-get(v.$colors, cl-light-blue);
-  
-  &:hover {
-    color: map-get(v.$colors, cl-green);
-  }
 }
