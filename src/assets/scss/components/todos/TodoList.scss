@@ -1,0 +1,8 @@
+@use 'sass:map';
+@use '../../partials/animations' as an;
+
+.list-group-item {
+  &:hover {
+    @include an.animate__pulse(.65s);
+  }
+}

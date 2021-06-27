@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../assets/scss/components/todos/TodoList.scss'
 
 export default function TodoList({ todo }) {
   return (
