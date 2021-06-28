@@ -33,25 +33,29 @@ export default function Home() {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-7 order-2 order-md-1">
-            <form method="post">
-              <div className="form-check form-switch mb-3 d-flex justify-content-end align-items-center">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="toggleActions"
-                  checked={toggleActions}
-                  onChange={() =>
-                    setToggleActions((prevToggleActions) => !prevToggleActions)
-                  }
-                />
-                <label
-                  className="form-check-label ms-1"
-                  htmlFor="toggleActions"
-                >
-                  actions
-                </label>
-              </div>
-            </form>
+            {todos.length >= 1 && (
+              <form method="post">
+                <div className="form-check form-switch mb-3 d-flex justify-content-end align-items-center">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="toggleActions"
+                    checked={toggleActions}
+                    onChange={() =>
+                      setToggleActions(
+                        (prevToggleActions) => !prevToggleActions
+                      )
+                    }
+                  />
+                  <label
+                    className="form-check-label ms-1"
+                    htmlFor="toggleActions"
+                  >
+                    actions
+                  </label>
+                </div>
+              </form>
+            )}
 
             <ul className="list-group list-group-flush rounded">
               {todos.map((todo) => (
