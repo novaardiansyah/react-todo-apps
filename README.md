@@ -33,9 +33,6 @@ hopefully you like it.
   <a href="https://github.com/novaardiansyah/react-todo-apps/blob/main/references.json" _target="blank">
     <img src="https://img.shields.io/badge/information-references-informational">
   </a>
-  <a href="https://github.com/novaardiansyah/react-todo-apps/blob/main/credits.json" _target="blank">
-    <img src="https://img.shields.io/badge/information-credits-informational">
-  </a>
   <a href="#" _target="blank">
     <img src="https://img.shields.io/github/repo-size/novaardiansyah/react-todo-apps?label=size&color=informational" />
   </a>
@@ -44,5 +41,8 @@ hopefully you like it.
   </a>
   <a href="https://github.com/novaardiansyah/react-todo-apps/commits/main" _target="blank">
     <img src="https://img.shields.io/github/last-commit/novaardiansyah/react-todo-apps/main?color=informational" />
+  </a>
+  <a href="https://github.com/novaardiansyah/react-todo-apps/blob/main/credits.txt" _target="blank">
+    <img src="https://img.shields.io/badge/information-credits-informational">
   </a>
 </p>
