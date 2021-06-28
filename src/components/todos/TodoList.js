@@ -1,24 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
+
+// style
 import '../../assets/scss/components/todos/TodoList.scss'
+
 // modal
 import Modal from '../modal/Modal'
 import ModalHeader from '../modal/ModalHeader'
 
-export default function TodoList({ todo, DeleteTodos, UpdateTodos }) {
-  const [showIcons, setShowIcons] = useState(false)
-
+export default function TodoList({
+  todo,
+  DeleteTodos,
+  UpdateTodos,
+  toggleActions,
+}) {
   return (
     <>
       <li
         className="d-flex align-items-center py-3 justify-content-between 
         list-group-item bg-cl-dark text-cl-light shadow"
         key={todo.timestamp}
-        onMouseEnter={(e) => setShowIcons(true)}
-        onMouseLeave={(e) => setShowIcons(false)}
       >
         {todo.title}
 
-        <span className={showIcons ? '' : 'd-none'}>
+        <span className={toggleActions ? '' : 'd-none'}>
           <button
             className="btn p-1 pe-0"
             data-bs-toggle="modal"
@@ -40,9 +44,7 @@ export default function TodoList({ todo, DeleteTodos, UpdateTodos }) {
           id={'updateTodos' + todo.timestamp}
           title="Update Your To-Do"
         />
-        <div className="modal-body">
-          {todo.title}
-        </div>
+        <div className="modal-body">{todo.title}</div>
       </Modal>
     </>
   )

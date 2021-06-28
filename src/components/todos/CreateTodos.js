@@ -1,28 +1,38 @@
 import React, { useRef, useState } from 'react'
 
 export default function CreateTodos({ todos, setTodos }) {
-  const todosForm = useRef(null)
+  // state
   const [disableBtn, setDisableBtn] = useState(true)
 
-  function createTodos(e) {
+  // ref
+  const todoRef = useRef('')
+
+  // method
+  const createTodos = (e) => {
     e.preventDefault()
-    const form = todosForm.current
 
-    setTodos([...todos, { title: form['todo'].value, timestamp: Date.now() }])
+    setTodos([
+      ...todos,
+      { title: todoRef.current.value, timestamp: Date.now() },
+    ])
 
-    form['todo'].value = ''
+    todoRef.current.value = ''
+    setDisableBtn(true)
   }
 
   return (
-    <form method="post" onSubmit={createTodos} ref={todosForm}>
+    <form method="post" onSubmit={createTodos}>
       <div className="input-group mb-3">
         <input
           type="text"
           className="form-control"
           placeholder="create a new todo.."
           name="todo"
-          onChange={(e) =>
-            e.target.value ? setDisableBtn(false) : setDisableBtn(true)
+          ref={todoRef}
+          onChange={() =>
+            todoRef.current.value.length >= 5
+              ? setDisableBtn(false)
+              : setDisableBtn(true)
           }
         />
         <button type="submit" className="btn btn-primary" disabled={disableBtn}>
