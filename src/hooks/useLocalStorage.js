@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const PREFIX = ''
+const PREFIX = 'react-todo-apps-'
 
 function getSavedValue({ key, initialValue }) {
   if (initialValue instanceof Function) return initialValue()

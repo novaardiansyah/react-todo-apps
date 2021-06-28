@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 // todos
 import TodoList from './todos/TodoList'
 import CreateTodos from './todos/CreateTodos'
+// hooks
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 export default function Home() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useLocalStorage({ key: 'todos', initialValue: [] })
 
   const DeleteTodos = ({ id }) => {
     setTodos((prevTodos) => {
@@ -19,25 +21,27 @@ export default function Home() {
   }
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-7 order-2 order-md-1">
-          <ul className="list-group list-group-flush rounded">
-            {todos.map((todo) => (
-              <TodoList
-                key={todo.timestamp}
-                todo={todo}
-                DeleteTodos={DeleteTodos}
-                UpdateTodos={UpdateTodos}
-              />
-            ))}
-          </ul>
-        </div>
+    <>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-md-7 order-2 order-md-1">
+            <ul className="list-group list-group-flush rounded">
+              {todos.map((todo) => (
+                <TodoList
+                  key={todo.timestamp}
+                  todo={todo}
+                  DeleteTodos={DeleteTodos}
+                  UpdateTodos={UpdateTodos}
+                />
+              ))}
+            </ul>
+          </div>
 
-        <div className="col-md order-1 order-md-2">
-          <CreateTodos todos={todos} setTodos={setTodos} />
+          <div className="col-md order-1 order-md-2">
+            <CreateTodos todos={todos} setTodos={setTodos} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
