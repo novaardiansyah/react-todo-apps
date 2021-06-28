@@ -1,16 +1,18 @@
 import React from 'react'
 
-export default function Modal({ children }) {
+export default function Modal({ children, id, textColor }) {
   return (
     <div
       className="modal fade"
-      id="myModal"
+      id={id}
       tabIndex="-1"
-      aria-labelledby="myModalLabel"
+      aria-labelledby={id + 'Label'}
       aria-hidden="true"
     >
       <div className="modal-dialog">
-        <div className="modal-content text-cl-dark">{children}</div>
+        <div className={`modal-content ${textColor || 'text-dark'}`}>
+          {children}
+        </div>
       </div>
     </div>
   )
