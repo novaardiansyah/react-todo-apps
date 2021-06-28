@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import defaultProfile from '../assets/default-profile.png'
+import defaultProfile from '../assets/default-profile.jpg'
 import '../assets/scss/components/Navbar.scss'
 
 export default function Navbar() {
