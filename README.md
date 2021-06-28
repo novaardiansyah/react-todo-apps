@@ -21,8 +21,9 @@ You can contribute to this site by submitting pull request.
 
 ### Preview
 
-you can see the results of this repo through a <a href="#">live demo</a>,
-hopefully you like it.
+you can see the results of this repo through a
+<a href="https://react-todo-apps.vercel.app">live demo</a>, hopefully you like
+it.
 
 ### Status
 
