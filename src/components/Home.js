@@ -24,8 +24,8 @@ export default function Home() {
     console.log('successfully deleted data', id)
   }
 
-  const UpdateTodos = ({ id }) => {
-    console.log('successfully update data', id)
+  const UpdateTodos = ({ id, title }) => {
+    console.log('successfully update data', id, title)
   }
 
   return (

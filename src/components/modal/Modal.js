@@ -8,6 +8,8 @@ export default function Modal({ children, id, textColor }) {
       tabIndex="-1"
       aria-labelledby={id + 'Label'}
       aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
     >
       <div className="modal-dialog">
         <div className={`modal-content ${textColor || 'text-dark'}`}>
