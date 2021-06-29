@@ -13,7 +13,12 @@ export default function CreateTodos({ todos, setTodos }) {
 
     setTodos([
       ...todos,
-      { title: todoRef.current.value, timestamp: Date.now() },
+      {
+        id: Date.now(),
+        title: todoRef.current.value,
+        timestamp: Date.now(),
+        complete: false,
+      },
     ])
 
     todoRef.current.value = ''

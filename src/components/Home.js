@@ -18,14 +18,14 @@ export default function Home() {
   // method
   const DeleteTodos = ({ id }) => {
     setTodos((prevTodos) => {
-      return prevTodos.filter((todo) => todo.timestamp !== id)
+      return prevTodos.filter((todo) => todo.id !== id)
     })
 
     console.log('successfully deleted data', id)
   }
 
   const UpdateTodos = ({ id, title }) => {
-    console.log('successfully update data', id, title)
+    console.log('successfully update data')
   }
 
   return (
@@ -57,16 +57,19 @@ export default function Home() {
               </form>
             )}
 
+            <h5 className="my-4">Your To-Do</h5>
             <ul className="list-group list-group-flush rounded">
-              {todos.map((todo) => (
-                <TodoList
-                  key={todo.timestamp}
-                  todo={todo}
-                  DeleteTodos={DeleteTodos}
-                  UpdateTodos={UpdateTodos}
-                  toggleActions={toggleActions}
-                />
-              ))}
+              {todos
+                .filter((todo) => !todo.complete)
+                .map((todo) => (
+                  <TodoList
+                    key={todo.id}
+                    todo={todo}
+                    DeleteTodos={DeleteTodos}
+                    UpdateTodos={UpdateTodos}
+                    toggleActions={toggleActions}
+                  />
+                ))}
             </ul>
           </div>
 
