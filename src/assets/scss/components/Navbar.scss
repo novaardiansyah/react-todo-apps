@@ -2,7 +2,7 @@
 @use '../partials/variables' as v;
 
 .navbar {
-  margin: -5% 0 5% 0;
+  margin: -10% 0 5% 0;
   
   a {
     color: map-get(v.$colors, cl-light);

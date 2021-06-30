@@ -43,8 +43,13 @@ export default function Home() {
               </form>
             )}
 
-            <Todos title="Your Daily To-Dos" todos={notCompleteTodos} />
-            <Todos title="Your Complete To-Dos" todos={completeTodos} />
+            {notCompleteTodos.length >= 1 && (
+              <Todos title="Your Daily To-Dos" todos={notCompleteTodos} />
+            )}
+
+            {completeTodos.length >= 1 && (
+              <Todos title="Your Complete To-Dos" todos={completeTodos} />
+            )}
           </div>
 
           <div className="col-md order-1 order-md-2">
