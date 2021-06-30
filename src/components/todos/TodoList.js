@@ -42,6 +42,12 @@ export default function TodoList({ todo }) {
           className={`btn btn__transparent p-1 pe-0 ${
             toggleActions ? 'd-none' : ''
           }`}
+          onClick={() =>
+            UpdateTodos({
+              id: todo.id,
+              complete: !todo.complete,
+            })
+          }
         >
           <i
             className={
@@ -89,7 +95,7 @@ export default function TodoList({ todo }) {
                 className="btn btn-secondary me-2"
                 data-bs-dismiss="modal"
               >
-                cancel
+                close
               </button>
               <button type="submit" className="btn btn-primary">
                 update

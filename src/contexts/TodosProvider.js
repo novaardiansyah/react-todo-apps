@@ -59,15 +59,22 @@ export function TodosProvider({ children }) {
     return cloudFirestore.collection('todos').doc(id).delete()
   }
 
-  const UpdateTodos = ({ id, title }) => {
+  const UpdateTodos = ({ id, title, complete }) => {
     console.log('successfully update data')
-    return cloudFirestore.collection('todos').doc(id).set(
-      {
-        title,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      },
-      { merge: true }
-    )
+    
+    if (complete === "undifined" || complete === null) {
+      return cloudFirestore.collection('todos').doc(id).set(
+        {
+          title,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        },
+        { merge: true }
+      )
+    }
+    
+    return cloudFirestore.collection('todos').doc(id).set({
+      complete
+    }, { merge: true })
   }
 
   const value = {
