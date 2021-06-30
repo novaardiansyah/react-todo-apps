@@ -1,31 +1,32 @@
 import React, { useRef } from 'react'
-
 // style
 import '../../assets/scss/components/todos/TodoList.scss'
-
 // modal
 import Modal from '../modal/Modal'
 import ModalHeader from '../modal/ModalHeader'
+// contexts
+import { useTodos } from '../../contexts/TodosProvider'
 
-export default function TodoList({
-  todo,
-  DeleteTodos,
-  UpdateTodos,
-  toggleActions,
-}) {
+export default function TodoList({ todo }) {
   //ref
   const todoRef = useRef('')
   const idRef = useRef('')
+
+  // value from contexts
+  const { toggleActions, DeleteTodos, UpdateTodos } = useTodos()
 
   // method
   const handleUpdateTodos = (e) => {
     e.preventDefault()
 
-    UpdateTodos({
-      id: idRef,
-      title: todoRef.current.value,
-      timestamp: Date.now(),
-    })
+    if (todoRef.current.value.length >= 5) {
+      UpdateTodos({
+        id: idRef.current.value,
+        title: todoRef.current.value,
+      })
+    }
+
+    return console.log('todo title must contain at least 5 characters')
   }
 
   return (
@@ -90,11 +91,7 @@ export default function TodoList({
               >
                 cancel
               </button>
-              <button
-                type="submit"
-                className="btn btn-primary"
-                data-bs-dismiss="modal"
-              >
+              <button type="submit" className="btn btn-primary">
                 update
               </button>
             </div>
