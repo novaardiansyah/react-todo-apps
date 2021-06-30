@@ -1,32 +1,18 @@
 import React from 'react'
 
 // todos
-import TodoList from './todos/TodoList'
 import CreateTodos from './todos/CreateTodos'
-
-// hooks
-import { useLocalStorage } from '../hooks/useLocalStorage'
+import Todos from './todos/Todos'
+// contexts
+import { useTodos } from '../contexts/TodosProvider'
 
 export default function Home() {
-  // state
-  const [todos, setTodos] = useLocalStorage({ key: 'todos', initialValue: [] })
-  const [toggleActions, setToggleActions] = useLocalStorage({
-    key: 'toggleActions',
-    initialValue: false,
-  })
+  // value from contexts
+  const { todos, setTodos, toggleActions, setToggleActions } = useTodos()
 
-  // method
-  const DeleteTodos = ({ id }) => {
-    setTodos((prevTodos) => {
-      return prevTodos.filter((todo) => todo.id !== id)
-    })
-
-    console.log('successfully deleted data', id)
-  }
-
-  const UpdateTodos = ({ id, title }) => {
-    console.log('successfully update data')
-  }
+  // todos is divided into two parts:
+  const completeTodos = todos.filter((todo) => todo.complete)
+  const notCompleteTodos = todos.filter((todo) => !todo.complete)
 
   return (
     <>
@@ -57,20 +43,8 @@ export default function Home() {
               </form>
             )}
 
-            <h5 className="my-4">Your To-Do</h5>
-            <ul className="list-group list-group-flush rounded">
-              {todos
-                .filter((todo) => !todo.complete)
-                .map((todo) => (
-                  <TodoList
-                    key={todo.id}
-                    todo={todo}
-                    DeleteTodos={DeleteTodos}
-                    UpdateTodos={UpdateTodos}
-                    toggleActions={toggleActions}
-                  />
-                ))}
-            </ul>
+            <Todos title="Your Daily To-Dos" todos={notCompleteTodos} />
+            <Todos title="Your Complete To-Dos" todos={completeTodos} />
           </div>
 
           <div className="col-md order-1 order-md-2">
