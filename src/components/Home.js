@@ -1,14 +1,21 @@
 import React from 'react'
 
 // todos
-import CreateTodos from './todos/CreateTodos'
 import Todos from './todos/Todos'
 // contexts
 import { useTodos } from '../contexts/TodosProvider'
 
 export default function Home() {
   // value from contexts
-  const { todos, setTodos, toggleActions, setToggleActions } = useTodos()
+  const {
+    todos,
+    toggleActions,
+    setToggleActions,
+    todoRef,
+    disableBtn,
+    setDisableBtn,
+    CreateTodos,
+  } = useTodos()
 
   // todos is divided into two parts:
   const completeTodos = todos.filter((todo) => todo.complete)
@@ -53,7 +60,29 @@ export default function Home() {
           </div>
 
           <div className="col-md order-1 order-md-2">
-            <CreateTodos todos={todos} setTodos={setTodos} />
+            <form method="post" onSubmit={CreateTodos}>
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="create a new todo.."
+                  name="todo"
+                  ref={todoRef}
+                  onChange={() =>
+                    todoRef.current.value.length >= 5
+                      ? setDisableBtn(false)
+                      : setDisableBtn(true)
+                  }
+                />
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={disableBtn}
+                >
+                  Add Todo
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

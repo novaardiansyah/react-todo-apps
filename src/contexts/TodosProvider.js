@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 
 // hooks
 import { useLocalStorage } from '../hooks/useLocalStorage'
@@ -12,8 +12,29 @@ export function TodosProvider({ children }) {
     key: 'toggleActions',
     initialValue: false,
   })
+  const [disableBtn, setDisableBtn] = useState(false)
+  
+  // ref
+  const todoRef = useRef('')
   
   // method
+  const CreateTodos = (e) => {
+    e.preventDefault()
+
+    setTodos([
+      ...todos,
+      {
+        id: Date.now(),
+        title: todoRef.current.value,
+        timestamp: Date.now(),
+        complete: false,
+      },
+    ])
+
+    todoRef.current.value = ''
+    setDisableBtn(true)
+  }
+  
   const DeleteTodos = ({ id }) => {
     setTodos((prevTodos) => {
       return prevTodos.filter((todo) => todo.id !== id)
@@ -31,8 +52,12 @@ export function TodosProvider({ children }) {
     setTodos,
     toggleActions,
     setToggleActions,
+    todoRef,
+    disableBtn,
+    setDisableBtn,
     DeleteTodos,
     UpdateTodos,
+    CreateTodos,
   }
 
   return <TodosContext.Provider value={value}>{children}</TodosContext.Provider>

@@ -87,11 +87,14 @@ export default function TodoList({
               <button
                 className="btn btn-secondary me-2"
                 data-bs-dismiss="modal"
-                aria-label="Close"
               >
                 cancel
               </button>
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
                 update
               </button>
             </div>
