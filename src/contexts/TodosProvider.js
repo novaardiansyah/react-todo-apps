@@ -62,7 +62,7 @@ export function TodosProvider({ children }) {
   const UpdateTodos = ({ id, title, complete }) => {
     console.log('successfully update data')
     
-    if (complete === "undifined" || complete === null) {
+    if (complete === undefined || complete === null) {
       return cloudFirestore.collection('todos').doc(id).set(
         {
           title,
